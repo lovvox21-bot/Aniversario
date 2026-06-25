@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANIVERSARIO</title>
+    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+    <!-- TÍTULOS -->
+    <h1 class="titulo">FELIZ ANIVERSARIO</h1>
+    <p class="subtitulo">MI REGALO</p>
+
+    <!-- SECCIÓN DE VIDEOS -->
+    <h2 class="titulo-seccion">Una Playlist Llena de Amor para Ti</h2>
+    
+    <div class="videos-area" id="videosArea">
+        
+        <!-- CARRUSEL UNIFICADO (todos los videos: descargados + YouTube) -->
+        <div class="carrusel-normal" id="carruselNormal">
+            <div class="carrusel-track" id="carruselTrack">
+                
+                <!-- VIDEO DESCARGADO 1 -->
+                <div class="video-item" onclick="seleccionarVideo(0)">
+                    <div class="video-iframe-small">
+                        <video class="video-preview" muted>
+                            <source src="Matisse, Reik - Eres Tú.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                    <p class="video-nombre">Matisse, Reik - Eres Tú</p>
+                </div>
+
+                <!-- VIDEO DESCARGADO 2 -->
+                <div class="video-item" onclick="seleccionarVideo(1)">
+                    <div class="video-iframe-small">
+                        <video class="video-preview" muted>
+                            <source src="Maluma-ADMV.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                    <p class="video-nombre">Maluma-ADMV</p>
+                </div>
+
+                <!-- VIDEO DESCARGADO 3 -->
+                <div class="video-item" onclick="seleccionarVideo(2)">
+                    <div class="video-iframe-small">
+                        <video class="video-preview" muted>
+                            <source src="Chino y Nacho–Andas En Mi Cabeza ft. Daddy Yankee.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                    <p class="video-nombre">Chino y Nacho–Andas En Mi Cabeza ft. Daddy Yankee</p>
+                </div>
+
+                <!-- VIDEO DESCARGADO 4 -->
+                <div class="video-item" onclick="seleccionarVideo(2)">
+                    <div class="video-iframe-small">
+                        <video class="video-preview" muted>
+                            <source src="Ale Aguirre-Distancia.mp4" type="video/mp4">
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                    <p class="video-nombre">Ale Aguirre-Distancia</p>
+                </div>
+
+                <!-- VIDEO YOUTUBE 1 -->
+                <div class="video-item" onclick="seleccionarVideo(3)">
+                    <div class="video-iframe-small">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/n2Cld9aU1vU?si=-5cnskpVL0pl7glD"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                            gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-nombre">Diego Luna - Te Amo Y Más</p>
+                </div>
+
+                <!-- VIDEO YOUTUBE 2 -->
+                <div class="video-item" onclick="seleccionarVideo(4)">
+                    <div class="video-iframe-small">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/tNTbzidfsNQ?si=X9WKSYs0XAk9hTww"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+                            gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-nombre">Reik - Sabes</p>
+                </div>
+
+                <!-- VIDEO YOUTUBE 3 -->
+                <div class="video-item" onclick="seleccionarVideo(5)">
+                    <div class="video-iframe-small">
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/5MR5sjCcciw?si=IOFpFmCVqJMYW4GC"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+                            gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-nombre">Camila - Solo Para Ti</p>
+                </div>
+
+                <!-- VIDEO YOUTUBE 4 -->
+                <div class="video-item" onclick="seleccionarVideo(6)">
+                    <div class="video-iframe-small">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/N2KU_RYclA0?si=I85vPdXtkojxIStS"
+                            title="YouTube video player" frameborder="0" allow="accelerometer;
+                            autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-nombre">Ashton Edminster- Break the distance</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- VISTA ACTIVA (video grande en centro, pequeños a los costados) -->
+        <div class="vista-activa" id="vistaActiva">
+            
+            <!-- IZQUIERDA: videos pequeños -->
+            <div class="lado-izquierdo" id="ladoIzquierdo"></div>
+
+            <!-- CENTRO: video grande con zoom -->
+            <div class="centro">
+                <div class="video-principal" id="videoPrincipal">
+                    <!-- Contenedor dinámico: se llena con JS (iframe o video) -->
+                    <div id="contenedorPrincipal"></div>
+                </div>
+            </div>
+
+            <!-- DERECHA: videos pequeños -->
+            <div class="lado-derecho" id="ladoDerecho"></div>
+
+        </div>
+
+        <button class="btn-cerrar" onclick="cerrarVideo()">↩ Volver al carrusel</button>
+
+    </div>
+
+    <!-- TEXTO DESCRIPTIVO -->
+    <div class="texto-videos">
+        <h3>Mi amor por ti</h3>
+        <p>Estas canciones te las dedico a ti, mi amor. No quiero que olvides lo mucho que significas para mí.
+            Eres la persona más preciosa que la vida me ha regalado, y cada una de estas canciones guarda un 
+            pedacito de lo que siento por ti. Cuando las escuches, recuerda que, aunque la distancia nos separe, 
+            mi corazón siempre está contigo. 
+            Te amo hoy, mañana y siempre.</p>
+    </div>
+
+    <!-- CARRUSEL DE TARJETAS CON CORAZÓN DE FONDO -->
+    <div class="carrusel-con-corazon">
+        <canvas id="pinkboard"></canvas>
+        <div class="carrusel-content">
+            <h2>Todo Lo Que Siento por Ti</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="card" tabindex="0" data-imagen="mensaje.jpg">
+                        <h3>Tus Mensajes, Mi Lugar Favorito</h3>
+                        <p>Si supieras cuánto me gusta leer tus mensajes, entenderías por qué siempre vuelvo a ellos
+                             cuando te extraño. En cada palabra encuentro un pedacito de ti, una razón para sonreír y 
+                             sentirte más cerca de mí. A veces los releo una y otra vez, porque me recuerdan lo especial
+                              que eres y lo afortunada que soy de tenerte en mi vida. Incluso en la distancia, 
+                            tus mensajes tienen la magia de alegrar mis días y llenar mi corazón de felicidad. </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="entre-personas.jpg">
+                        <h3>La Mejor Casualidad de Mi Vida</h3>
+                        <p>Entre millones de personas, mi corazón tuvo la suerte de encontrarte a ti, 
+                            y volvería a elegir el día en que te conocí una y mil veces más. Desde que llegaste a mi vida, 
+                            todo se volvió más especial, porque contigo encontré a alguien que me hace sonreír incluso en los
+                            días más difíciles. Cada momento compartido, cada conversación y cada recuerdo a tu lado tienen
+                            un lugar único en mi corazón. Si pudiera volver atrás en el tiempo, tomaría exactamente el mismo 
+                            camino, porque sé que al final me llevaría nuevamente hasta ti.</p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="sirena.webp">
+                        <h3>El Tiempo Solo Me Hace Amarte Más</h3>
+                        <p>No importa cuánto pase el tiempo, siempre encuentro una nueva razón para seguir enamorándome de ti. Tu forma de ser, tu 
+                            sonrisa y cada pequeño detalle tuyo hacen que mi amor crezca día tras día. Me encanta descubrir cosas nuevas de ti y 
+                            darme cuenta de lo especial que eres para mí. Aunque la distancia nos separe, mi corazón siempre encuentra el camino 
+                            de regreso a ti. Cada recuerdo, cada mensaje y cada momento que compartimos me recuerdan lo afortunada que soy de
+                            tenerte en mi vida. Eres una persona muy importante para mí y alguien a quien elegiría una y otra vez.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="sapo.jpg">
+                        <h3>Un Regalo de Dios</h3>
+                        <p>Dios escribió nuestra historia de una manera inesperada, 
+                            y cada día agradezco que te haya puesto en mi camino. Nunca imaginé que alguien pudiera llegar a 
+                            ser tan importante para mí, pero desde que te conocí, mi vida cambió para mejor. 
+                            A pesar de la distancia y de los desafíos que hemos enfrentado, cada momento contigo me confirma 
+                            que valió la pena encontrarte. Le doy gracias a Dios por tu existencia, por tu amor y por la
+                             felicidad que traes a mi corazón cada día.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="mi-vida.jpg">
+                        <h3>Desde que Llegaste a Mi Vida</h3>
+                        <p>Jamás imaginé encontrar a alguien capaz de llegar tan profundo a mi corazón como tú. Desde que 
+                            llegaste a mi vida, todo tiene un significado más bonito porque estás presente en mis
+                             pensamientos. Tu forma de ser, tus palabras y cada momento que compartimos han dejado huellas 
+                             que guardo con mucho cariño. Incluso en la distancia, sigues siendo una parte muy especial de mi
+                              vida y de los sueños que quiero construir para el futuro.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="lo-que-mas-amo-de-nosotros.webp">
+                        <h3>Lo Que Más Amo de Nosotros</h3>
+                        <p>Lo que más amo de nosotros no es la perfección, sino la sinceridad con la que nos queremos cada
+                            día. Me encanta que podamos ser nosotros mismos, compartiendo nuestras alegrías, nuestras
+                            preocupaciones y cada momento especial de nuestras vidas. Nuestro amor no es perfecto, pero es 
+                            real, y eso es lo que lo hace tan valioso para mí. Cada día agradezco la confianza, el cariño y
+                            la hermosa conexión que hemos construido juntos.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="a-mi-vida.jpg">
+                        <h3>Gracias por Estar en Mi Vida</h3>
+                        <p>Mi amor, si siempre te recuerdo cuánto te amo, es porque mi corazón nunca se cansa de agradecer
+                            que estés en mi vida. Eres mi tranquilidad, mi felicidad y una de las bendiciones más hermosas
+                            que Dios me ha regalado. Cada día encuentro nuevas razones para valorarte y sentirme afortunado
+                            de tenerte. Gracias por tu cariño, por tu apoyo y por llenar mi corazón de tanto amor.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="siempre-tu.webp">
+                        <h3>Siempre Tú</h3>
+                        <p>Quiero que nunca olvides cuánto te amo. No importa la distancia ni el tiempo, mi corazón siempre 
+                            te elige a ti. Eres la persona con la que puedo ser yo mismo, mi tranquilidad en los días 
+                            difíciles y mi felicidad en los días buenos. Cada momento que compartimos, cada conversación y 
+                            cada recuerdo contigo tienen un lugar muy especial en mi corazón. Gracias por existir, por
+                             acompañarme con tu cariño y por hacer mi vida mucho más bonita desde que llegaste a ella.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="corazon.webp">
+                        <h3>Gracias por Compartir Tu Corazón Conmigo</h3>
+                        <p>Quizás somos jóvenes y aún tenemos mucho por aprender, pero cada día estoy más seguro de que eres una
+                            de las personas más importantes de mi vida. A tu lado he vivido momentos que guardo con mucho cariño y he
+                            aprendido el valor de tener a alguien tan especial en mi corazón. Gracias por compartir tu tiempo, tus pensamientos
+                            y tus sentimientos conmigo. No sé qué nos deparará el futuro, pero sí sé que agradezco profundamente haberte encontrado
+                            y poder compartir esta hermosa historia contigo.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="bienestar-es-importante.jpg">
+                        <h3>Tu Bienestar es Importante para Mí</h3>
+                        <p>Tal vez me preocupo demasiado por ti, pero es porque tu felicidad también se ha vuelto importante para mí. Cuando 
+                            alguien ocupa un lugar tan especial en el corazón, es imposible no querer verlo bien, sonriendo y cumpliendo sus 
+                            sueños. Quiero que nunca olvides que mereces un amor sincero, de esos que cuidan, apoyan y permanecen presentes 
+                            incluso en la distancia. Siempre voy a desear lo mejor para ti, porque verte feliz también llena de alegría mi corazón.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carrusel-content">
+            <h2>La Vida que Imagino a Tu Lado</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="card" tabindex="0" data-imagen="gatoss.jpg">
+                        <h3>Esperando el Momento de Estar Juntas</h3>
+                        <p>Sería hermoso poder ir a verte, abrazarte, besarte y mimarte todo lo que no he podido hacerlo por la distancia. Poder 
+                            estar a tu lado, tomar tu mano y disfrutar de esos pequeños momentos que hoy solo imagino. A veces quisiera cambiar las
+                            pantallas y los mensajes por tu presencia.
+                            Mientras tanto, sigo esperando con ilusión, porque cada mensaje tuyo alegra mi día. Y aunque la distancia nos separe,
+                             sé que llegará el momento en que por fin podamos estar juntas y crear recuerdos hermosos una al lado de la otra.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="juntos.webp">
+                        <h3>Pequeños Momentos que Valoro</h3>
+                        <p>Cuando vemos películas juntas, hay algo que siempre valoro mucho: que, a pesar de estar cansada, siempre encuentras un
+                            momento para compartir conmigo. Sé que a veces el sueño te gana y terminas quedándote dormida a la mitad de la 
+                            película, y aunque me da un poco de risa, también me parece algo muy tierno. Lo que más me importa no es terminar la
+                            película, sino poder pasar ese tiempo contigo, porque cada momento que compartimos hace que nuestra relación sea aún 
+                            más especial para mí.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="montanas.webp">
+                        <h3>Escuchar Tu Voz Siempre Vale la Pena</h3>
+                        <p>Ya no hacemos llamadas tan seguido como antes, y entiendo que muchas veces estás ocupada o cansada por todas las cosas 
+                            que tienes que hacer. Aun así, cada vez que tenemos la oportunidad de hablar, lo valoro muchísimo. Escuchar tu voz
+                            siempre alegra mi día y me hace sentir más cerca de ti, sin importar la distancia.
+                            Por eso aprecio tanto esos momentos que compartimos en llamada. Aunque estés cansada, siempre encuentras un espacio 
+                            para nosotras, y eso significa mucho para mí. Son pequeños detalles que me recuerdan cuánto te importo y que hacen que
+                            nuestro amor siga creciendo día a día.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="abuelos.webp">
+                        <h3>Las Fotos que Guardo con Cariño</h3>
+                        <p>Cuando se trata de enviarme una foto de tu rostro, amor, sé que no siempre te gusta tomarte fotos y que no lo haces muy 
+                            seguido. Por eso, cada vez que me envías una, la valoro muchísimo. Me encanta poder ver tu sonrisa y esos pequeños 
+                            detalles que tanto adoro de ti.
+                            Cuando te extraño, suelo mirar tus fotos porque me hacen sentir un poco más cerca de ti. Tal vez para ti sea solo una 
+                            foto, pero para mí es un recuerdo muy especial de la persona que ocupa un lugar enorme en mi corazón.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="rosa.jpg">
+                        <h3>El Día que Por Fin Nos Veamos</h3>
+                        <p>Lo primero que haré cuando nos veamos será abrazarte fuerte y agradecerle a Dios por permitirme tenerte frente a mí. 
+                            Después de tantas llamadas, mensajes y momentos compartidos a la distancia, por fin podré estar a tu lado de verdad.
+                            He imaginado ese momento muchas veces, y cada vez me llena de emoción pensar que algún día dejará de ser un sueño.
+                            Quiero crear recuerdos contigo en persona, compartir risas, conversaciones y esos pequeños momentos que hacen especial 
+                            cualquier día. Sé que la espera valdrá la pena, porque al final podré estar junto a la persona que tanto amo.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="robots.jpg">
+                        <h3>Siempre Apoyándote</h3>
+                        <p>Quiero estar a tu lado, apoyándote en cada paso que des y acompañándote en cada desafío que la vida te presente. Me 
+                            hace feliz verte esforzarte por tus sueños y trabajar por las metas que tanto deseas alcanzar. Quiero celebrar contigo
+                            cada logro, por pequeño o grande que sea, y recordarte siempre lo capaz y valiosa que eres. Aunque no siempre pueda 
+                            estar cerca físicamente, quiero que sepas que siempre tendrás mi apoyo y mis mejores deseos. Verte triunfar, crecer y 
+                            alcanzar todo aquello que te propones es algo que llena mi corazón de orgullo y felicidad.
+                        </p>
+                    </div>
+                     <div class="card" tabindex="0" data-imagen="dragon.jpg">
+                        <h3>Un Futuro para las Dos</h3>
+                        <p>Quiero cumplir tus sueños y esos pequeños caprichos que te hacen feliz. Recuerdo cuando me dijiste que te gustaría
+                            tener una casa en el campo, rodeada de tranquilidad y naturaleza. Desde ese momento, comencé a imaginar un hermoso
+                            futuro a tu lado. Me gustaría esforzarme para hacer realidad ese sueño y construir juntos un hogar lleno de amor y 
+                            felicidad. Imagino a nuestros hijos corriendo libremente de un lugar a otro, mientras nosotros creamos recuerdos 
+                            inolvidables. Tal vez sea un sueño para el futuro, pero me hace feliz pensar en todo lo que podríamos construir juntos 
+                            algún día.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="cecinienta.jpg">
+                        <h3>Mi Compañera de Vida</h3>
+                        <p>Quiero hacerte feliz y que nunca te arrepientas de haberme elegido. Cada día me esfuerzo por ser una mejor persona para
+                            ti, porque eres alguien muy importante en mi vida. Quiero ser tu compañera, estar a tu lado en los momentos buenos y
+                            también en los difíciles, apoyándote siempre que lo necesites. Quiero cuidarte, darte cariño y hacerte sentir amada 
+                            cada día. Mi deseo es construir una vida hermosa contigo, llena de confianza, respeto y recuerdos inolvidables. No sé
+                            qué nos traerá el futuro, pero sí sé que me gustaría recorrerlo a tu lado, compartir mis días contigo y pasar el resto
+                            de mi vida amándote, amor mío.
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="baile2.jpg">
+                        <h3>Siempre Encuentro el Camino Hacia Ti</h3>
+                        <p>Cuando te conocí, fui fría contigo, amor mío. Jamás imaginé que con el tiempo llegarías a ocupar un lugar tan
+                            importante en mi corazón. Poco a poco, con tu cariño y tu forma de ser, lograste que me enamorara de ti de una manera
+                            que nunca esperé. Hemos vivido momentos buenos y momentos difíciles, pero a pesar de todo, aquí seguimos. No sé qué me
+                            has hecho, pero cada vez estoy más segura de lo mucho que te amo. Gracias por estar en mi vida y por haberte convertido
+                            en alguien tan especial para mí. 
+                        </p>
+                    </div>
+                    <div class="card" tabindex="0" data-imagen="baile.jpg">
+                        <h3>Eres Mi Melodía Favorita</h3>
+                        <p>Si fueras una canción, serías mi favorita. Esa que nunca me canso de escuchar, la que alegra mis días y me acompaña en 
+                            los momentos difíciles. Porque, al igual que tú, tiene la capacidad de hacer sonreír a mi corazón. Hay canciones que 
+                            se escuchan una vez y se olvidan, pero también existen aquellas que se quedan para siempre, y tú eres así para mí. Cada
+                            vez que pienso en ti, siento esa misma felicidad que provoca escuchar una melodía especial. Eres una de las razones 
+                            por las que mis días tienen más color y mi corazón encuentra tranquilidad incluso en la distancia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE TARJETA EXPANDIDA -->
+    <div class="card-modal" id="cardModal">
+        <div class="card-modal-content">
+            <span class="close-card-modal">&times;</span>
+            <div class="card-modal-bg" id="cardModalBg"></div>
+            <div class="card-modal-text">
+                <h3 id="cardModalTitle"></h3>
+                <p id="cardModalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="espacio-final"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
